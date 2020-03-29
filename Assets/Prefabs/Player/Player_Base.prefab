@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2801729755114475785}
   - component: {fileID: 568637556239270282}
   - component: {fileID: 7750183540870082160}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MonoBehaviour:
   damage: 1
   delayAttack: 0.5
   spawnAttack: {x: 0, y: 0.55}
-  rangeAttack: 1
+  rangeAttack: 0.7
   health: 0
   rb: {fileID: 0}
   anim: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8120602080160029849}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -105,13 +105,16 @@ public class Enemy : MonoBehaviour
         //animation
         anim.SetTrigger("Attack");
 
-        //set start position, direction and StartInColliders false
+        //set start position and direction
         Vector2 startPosition = new Vector2(transform.position.x, transform.position.y) + spawnAttack;
         Vector2 direction = isLookingRight ? Vector2.right : Vector2.left;
-        Physics2D.queriesStartInColliders = false;
 
-        //raycast, if hit player do damage
-        RaycastHit2D hit = Physics2D.Raycast(startPosition, direction, rangeAttack);
+        //set layer to ignore self
+        LayerMask layer = Layer.CreateLayer.LayerAllExcept("Enemy");
+
+        //check, if hit player do damage
+        //RaycastHit2D hit = Physics2D.Raycast(startPosition, direction, rangeAttack, layer);
+        RaycastHit2D hit = Physics2D.Linecast(startPosition, startPosition + direction * rangeAttack, layer);
         if (hit)
         {
             Player player = hit.transform.GetComponent<Player>();

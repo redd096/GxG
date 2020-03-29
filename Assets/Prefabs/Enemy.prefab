@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6842485261451925601}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6842485262028235855}
   - component: {fileID: 4321307889895759365}
   - component: {fileID: 8644847874657375019}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
   damage: 0.5
   delayAttack: 3
   spawnAttack: {x: 0, y: 0.55}
-  rangeAttack: 1
+  rangeAttack: 0.7
   shieldHealth: 0
 --- !u!50 &4321307889895759365
 Rigidbody2D:
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 6842485262203463314}
   - component: {fileID: 581168327841086582}
   - component: {fileID: 6842485262203463315}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HeavyBandit_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 3280073275094472804}
   - component: {fileID: 5109900664230036562}
   - component: {fileID: 3223784855426012149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}

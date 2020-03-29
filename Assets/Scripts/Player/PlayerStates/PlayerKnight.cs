@@ -12,16 +12,16 @@ public class PlayerKnight : PlayerMoving
     {
         base.DoAttack();
 
-        //TODO controlla se ha un nemico di fronte a sé, nel caso chiama
-        //enemy.GetDamage(player.damage, player.isKnight);
-
-        //set start position, direction and StartInColliders false
+        //set start position and direction
         Vector2 startPosition = new Vector2(transform.position.x, transform.position.y) + player.spawnAttack;
         Vector2 direction = isLookingRight ? Vector2.right : Vector2.left;
-        Physics2D.queriesStartInColliders = false;
 
-        //raycast, if hit enemy do damage
-        RaycastHit2D hit = Physics2D.Raycast(startPosition, direction, player.rangeAttack);
+        //set layer to ignore self
+        LayerMask layer = Layer.CreateLayer.LayerAllExcept("Player");
+
+        //check, if hit enemy do damage
+        //RaycastHit2D hit = Physics2D.Raycast(startPosition, direction, player.rangeAttack, layer);
+        RaycastHit2D hit = Physics2D.Linecast(startPosition, startPosition + direction * player.rangeAttack, layer);
         if (hit)
         {
             Enemy enemy = hit.transform.GetComponent<Enemy>();
@@ -30,7 +30,5 @@ public class PlayerKnight : PlayerMoving
                 enemy.GetDamage(player.damage, player.typeOfPlayer);
             }
         }
-
-        //hit = Physics2D.Linecast(startPosition, startPosition + direction * player.rangeAttack);
     }
 }
