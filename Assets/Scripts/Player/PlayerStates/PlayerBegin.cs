@@ -12,11 +12,11 @@ public class PlayerBegin : State
     {
         Player player = stateMachine as Player;
 
-        if (player.isKnight)
+        if (player.typeOfPlayer == TypesOfPlayer.knight)
         {
             stateMachine.SetState(new PlayerKnight(stateMachine));
         }
-        else
+        else if (player.typeOfPlayer == TypesOfPlayer.wizard)
         {
             stateMachine.SetState(new PlayerWizard(stateMachine));
         }

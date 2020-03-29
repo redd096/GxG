@@ -2,65 +2,80 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TypesOfPlayer
+{
+    knight,
+    wizard
+}
+
 public class PlayerSelector : MonoBehaviour
 {
     [Header("Defaults")]
-    [SerializeField] bool startWithKnight = true;
+    [SerializeField] TypesOfPlayer startPlayer = TypesOfPlayer.knight;
+    //si può fare un array di struct (TypesOfPlayer, Player) così nel CreatePlayers controlla tutto l'array - non possono esserci duplicati di TypesOfPLayer
     [SerializeField] Player knightPrefab = default;
     [SerializeField] Player wizardPrefab = default;
 
     [Header("Switch")]
-    public float delaySwitch = 2;
-    [HideInInspector] public float timeLastSwitch;
+    [SerializeField] float delaySwitch = 2;
 
-    GameObject knight;
-    GameObject wizard;
+    float timeLastSwitch;
+
+    Dictionary<TypesOfPlayer, GameObject> players = new Dictionary<TypesOfPlayer, GameObject>();
 
     //for multiplayer
-    bool twoPlayers;
-    bool knightIsFirstPlayer;
+    bool twoPlayers = default;
 
     void Start()
     {
         CreatePlayers();
-
-        DeactivateOnePlayer(startWithKnight);
     }
 
     #region private API
+
+    #region start
 
     void CreatePlayers()
     {
         //find spawn
         Transform playerSpawn = FindObjectOfType<Player>().transform;
 
-        //instantiate
-        knight = Instantiate(knightPrefab).gameObject;
-        wizard = Instantiate(wizardPrefab).gameObject;
-
-        //set positions
-        knight.transform.position = playerSpawn.position;
-        wizard.transform.position = playerSpawn.position;
+        InstantiateOnePlayer(TypesOfPlayer.knight, knightPrefab, playerSpawn);
+        InstantiateOnePlayer(TypesOfPlayer.wizard, wizardPrefab, playerSpawn);
 
         //destroy spawn
         Destroy(playerSpawn.gameObject);
     }
 
-    void DeactivateOnePlayer(bool deactivateWizard)
+    void InstantiateOnePlayer(TypesOfPlayer typeOfPlayer, Player prefab, Transform spawn)
     {
-        //deactivate knight or wizard
-        if (deactivateWizard)
-        {
-            wizard.SetActive(false);
-        }
-        else
-        {
-            knight.SetActive(false);
-        }
+        //instantiate and add to dictionary
+        players[typeOfPlayer] = Instantiate(prefab).gameObject;
+
+        //set position
+        players[typeOfPlayer].transform.position = spawn.position;
+
+        //if not start player, deactivate it
+        if (typeOfPlayer != startPlayer)
+            players[typeOfPlayer].SetActive(false);
     }
 
-    void Switch(GameObject toDeactivate, GameObject toActivate)
+    #endregion
+
+    void SwitchToNextOne(TypesOfPlayer activePlayer)
     {
+        //get enum array
+        System.Array enums = System.Enum.GetValues(typeof(TypesOfPlayer));
+
+        //then get next one, or if exceed length get the first
+        int nextOne = (int)activePlayer + 1;
+        if (nextOne >= enums.Length)
+            nextOne = 0;
+
+        //toActivate (next one) and toDeactivate (this active player)
+        GameObject toActivate = players[(TypesOfPlayer)nextOne];
+        GameObject toDeactivate = players[activePlayer];
+
         //set position and sprite flip
         toActivate.transform.position = toDeactivate.transform.position;
         toActivate.GetComponentInChildren<SpriteRenderer>().flipX = toDeactivate.GetComponentInChildren<SpriteRenderer>().flipX;
@@ -72,30 +87,35 @@ public class PlayerSelector : MonoBehaviour
 
     #endregion
 
-    public void SwitchPlayer(bool playerIsKnight)
+    public void SwitchPlayer(TypesOfPlayer activePlayer)
     {
         //only if one player
         if (twoPlayers)
             return;
 
+        //check delay
+        if (Time.time < timeLastSwitch)
+            return;
+
+        timeLastSwitch = Time.time + delaySwitch;
+
         //deactivate one and active another
-        if(playerIsKnight)
-        {
-            Switch(knight, wizard);
-        }
-        else
-        {
-            Switch(wizard, knight);
-        }
+        SwitchToNextOne(activePlayer);
     }
 
+    /*
     #region multiplayer
+
+    //void DeactivateOnePlayer(TypesOfPlayer typeOfPlayer)
+    //{
+    //    //deactivate one player
+    //    players[typeOfPlayer].SetActive(false);
+    //}
 
     public void StartSecondPlayer()
     {
         //set two players
         twoPlayers = true;
-        bool isKnightActive = knight.activeSelf;
 
         if(isKnightActive)
         {
@@ -125,4 +145,5 @@ public class PlayerSelector : MonoBehaviour
     }
 
     #endregion
+    */
 }

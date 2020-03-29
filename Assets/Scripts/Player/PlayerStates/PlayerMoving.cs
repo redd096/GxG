@@ -135,14 +135,10 @@ public class PlayerMoving : State
 
     void Switch(bool inputSwitch)
     {
-        PlayerSelector playerSelector = gm.playerSelector;
-
-        //if press input after delay, try to switch 
-        if (inputSwitch && Time.time > playerSelector.timeLastSwitch)
+        //if press input, try to switch 
+        if (inputSwitch)
         {
-            playerSelector.timeLastSwitch = Time.time + playerSelector.delaySwitch;
-
-            playerSelector.SwitchPlayer(player.isKnight);
+            gm.playerSelector.SwitchPlayer(player.typeOfPlayer);
         }
     }
 

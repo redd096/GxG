@@ -2,21 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum PlayerWhoAttack
-{
-    knight,
-    wizard
-}
-
 public class Enemy : MonoBehaviour
 {
     [Header("Shield")]
-    [SerializeField] PlayerWhoAttack[] whoRemoveShield = new PlayerWhoAttack[1] { PlayerWhoAttack.wizard };
+    [SerializeField] TypesOfPlayer[] whoRemoveShield = new TypesOfPlayer[1] { TypesOfPlayer.wizard };
     [SerializeField] int numberAttacksToDestroy = 1;
     [SerializeField] float delayShieldRefill = 10;
 
     [Header("Health")]
-    [SerializeField] PlayerWhoAttack[] whoKillEnemy = new PlayerWhoAttack[1] { PlayerWhoAttack.knight };
+    [SerializeField] TypesOfPlayer[] whoKillEnemy = new TypesOfPlayer[1] { TypesOfPlayer.knight };
     [SerializeField] float health = 10;
 
     [Header("Attack")]
@@ -142,9 +136,9 @@ public class Enemy : MonoBehaviour
 
     #endregion
 
-    bool HitByRightPlayer(PlayerWhoAttack whoAttacked, PlayerWhoAttack[] playersWhoCanHit)
+    bool HitByRightPlayer(TypesOfPlayer whoAttacked, TypesOfPlayer[] playersWhoCanHit)
     {
-        foreach (PlayerWhoAttack player in playersWhoCanHit)
+        foreach (TypesOfPlayer player in playersWhoCanHit)
         {
             if (player == whoAttacked)
                 return true;
@@ -161,13 +155,10 @@ public class Enemy : MonoBehaviour
 
     #endregion
 
-    public void GetDamage(float damage, bool isKnight)
+    public void GetDamage(float damage, TypesOfPlayer whoAttacked)
     {
         //do something only if not already dead
         if (health <= 0) return;
-
-        //who attack?
-        PlayerWhoAttack whoAttacked = isKnight ? PlayerWhoAttack.knight : PlayerWhoAttack.wizard;
 
         //remove shield
         if(shieldHealth > 0)

@@ -27,7 +27,7 @@ public class PlayerKnight : PlayerMoving
             Enemy enemy = hit.transform.GetComponent<Enemy>();
             if (enemy)
             {
-                enemy.GetDamage(player.damage, player.isKnight);
+                enemy.GetDamage(player.damage, player.typeOfPlayer);
             }
         }
 

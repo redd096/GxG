@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : StateMachine
 {
     [Header("Important")]
-    public bool isKnight;
+    public TypesOfPlayer typeOfPlayer;
 
     [Header("GroundChecker - Blue Sphere")]
     public float height_groundChecker = 0.05f;
