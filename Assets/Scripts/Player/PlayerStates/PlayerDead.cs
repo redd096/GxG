@@ -20,6 +20,10 @@ public class PlayerDead : State
 
         while (player.health <= 0)
         {
+            //TODO TEMPORANEO
+            if (Input.GetKeyDown(KeyCode.K))
+                player.Ress(player.maxHealth);
+
             yield return null;
         }
 

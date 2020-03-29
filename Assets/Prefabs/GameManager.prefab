@@ -56,10 +56,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93fe1b8e0ef48314b9fb7c675f80d7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWithKnight: 1
-  knightPrefab: {fileID: 6850261085927488097, guid: a6fb938a0e95d2c49909003e416e620b,
+  startPlayer: 0
+  knightPrefab: {fileID: 8283485528242956116, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
     type: 3}
-  wizardPrefab: {fileID: 8310722267799076623, guid: 0b8293ee1bd9d6e4d8c309ea29e7566b,
+  wizardPrefab: {fileID: 4367417330837947653, guid: bc421f412ade1c54cb67c1a0fa792107,
     type: 3}
   delaySwitch: 2
-  timeLastSwitch: 0

@@ -27,7 +27,7 @@ public class PlayerMoving : State
 
     public override void Execution()
     {
-        Movement(Input.GetAxis("Horizontal"), Input.GetButton("Jump"));
+        Movement(Input.GetAxis("Horizontal"), Input.GetButtonDown("Jump"));
 
         NormalAnimation();
 
@@ -100,8 +100,10 @@ public class PlayerMoving : State
 
     bool IsGrounded()
     {
-        //overlap circle at player foots. If hit more than 1 (one is player), then is grounded
-        return Physics2D.OverlapCircleAll(transform.position + Vector3.up * player.height_groundChecker, player.radius_groundChecker).Length > 1;
+        //overlap box at player foots. If hit more than 1 (one is player), then is grounded
+        Vector2 position = new Vector2(transform.position.x, transform.position.y);
+        return Physics2D.OverlapBoxAll(position + player.position_groundChecker, new Vector2(player.width_groundChecker, player.height_groundChecker), 0).Length > 1;
+        //return Physics2D.OverlapCircleAll(transform.position + Vector3.up * player.height_groundChecker, player.width_groundChecker).Length > 1;
     }
 
     #endregion

@@ -8,8 +8,9 @@ public class Player : StateMachine
     public TypesOfPlayer typeOfPlayer;
 
     [Header("GroundChecker - Blue Sphere")]
+    public Vector2 position_groundChecker = new Vector2(0, 0.05f);
+    public float width_groundChecker = 0.75f;
     public float height_groundChecker = 0.05f;
-    public float radius_groundChecker = 0.05f;
 
     [Header("Movement")]
     public float speed = 100;
@@ -46,10 +47,6 @@ public class Player : StateMachine
     void Update()
     {
         state.Execution();
-
-        //TODO TEMPORANEO
-        if (Input.GetKeyDown(KeyCode.K))
-            Ress(maxHealth);
     }
 
     private void OnDrawGizmosSelected()
@@ -57,8 +54,8 @@ public class Player : StateMachine
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
 
         //sphere used to check if grounded
-        Gizmos.color = Color.cyan;    
-        Gizmos.DrawWireSphere(position + Vector2.up * height_groundChecker, radius_groundChecker);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(position + position_groundChecker, new Vector2(width_groundChecker, height_groundChecker));
 
         //range attack
         Gizmos.color = Color.red;

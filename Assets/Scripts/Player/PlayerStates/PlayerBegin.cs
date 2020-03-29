@@ -12,13 +12,17 @@ public class PlayerBegin : State
     {
         Player player = stateMachine as Player;
 
-        if (player.typeOfPlayer == TypesOfPlayer.knight)
+        switch (player.typeOfPlayer)
         {
-            stateMachine.SetState(new PlayerKnight(stateMachine));
-        }
-        else if (player.typeOfPlayer == TypesOfPlayer.wizard)
-        {
-            stateMachine.SetState(new PlayerWizard(stateMachine));
+            case TypesOfPlayer.knight:
+                stateMachine.SetState(new PlayerKnight(stateMachine));
+                break;
+            case TypesOfPlayer.wizard:
+                stateMachine.SetState(new PlayerWizard(stateMachine));
+                break;
+            default:
+                Debug.LogError("There is another Type of Player (enum) - add state machine");
+                break;
         }
 
         yield break;

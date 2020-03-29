@@ -49,6 +49,12 @@ public class PlayerSelector : MonoBehaviour
 
     void InstantiateOnePlayer(TypesOfPlayer typeOfPlayer, Player prefab, Transform spawn)
     {
+        if(prefab == null)
+        {
+            Debug.LogError("There is not " + typeOfPlayer.ToString() + " prefab");
+            return;
+        }
+
         //instantiate and add to dictionary
         players[typeOfPlayer] = Instantiate(prefab).gameObject;
 
