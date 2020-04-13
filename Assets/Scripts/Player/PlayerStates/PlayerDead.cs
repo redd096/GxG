@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDead : State
+public class PlayerDead : PlayerState
 {
-    Player player;
-    Animator anim;
-
     public PlayerDead(StateMachine _stateMachine) : base(_stateMachine)
     {
     }
 
     public override IEnumerator Enter()
     {
-        GetReferences();
-
         //wait while dead
         anim.SetBool("Dead", true);
 
         while (player.health <= 0)
         {
             //TODO TEMPORANEO
-            if (Input.GetKeyDown(KeyCode.K))
+            if (Inputs.GetButtonDown(player.inputs.ressTEMP, player.inputs.ressTEMPKeyboard))
                 player.Ress(player.maxHealth);
 
             yield return null;
@@ -32,14 +27,4 @@ public class PlayerDead : State
 
         stateMachine.SetState(new PlayerBegin(stateMachine));
     }
-
-    #region enter
-
-    void GetReferences()
-    {
-        player = stateMachine as Player;
-        anim = player.anim;
-    }
-
-    #endregion
 }

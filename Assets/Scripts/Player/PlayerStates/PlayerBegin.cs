@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBegin : State
+public class PlayerBegin : PlayerState
 {
     public PlayerBegin(StateMachine _stateMachine) : base(_stateMachine)
     {
@@ -10,8 +10,6 @@ public class PlayerBegin : State
 
     public override IEnumerator Enter()
     {
-        Player player = stateMachine as Player;
-
         switch (player.typeOfPlayer)
         {
             case TypesOfPlayer.knight:
@@ -21,7 +19,7 @@ public class PlayerBegin : State
                 stateMachine.SetState(new PlayerWizard(stateMachine));
                 yield break;
             default:
-                Debug.LogError("There is another Type of Player (enum) - add state machine");
+                Debug.LogError("There is another Type of Player (enum) - add state machine (" + player.typeOfPlayer + ")");
                 yield break;
         }
     }

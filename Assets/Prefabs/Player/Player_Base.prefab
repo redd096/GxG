@@ -55,8 +55,10 @@ MonoBehaviour:
   fallSpeed: 10
   maxFallSpeed: 10
   maxHealth: 3
-  damage: 1
-  delayAttack: 0.5
+  attack1Damage: 1
+  attack1Duration: 0.7
+  attack1Delay: 1
+  timeLastAttack: 0
   spawnAttack: {x: 0, y: 0.55}
   rangeAttack: 0.7
   health: 0
@@ -65,10 +67,12 @@ MonoBehaviour:
     movementY: 5
     switchPlayer: 5
     attack1: 0
+    ressTEMP: 1
     movementXKeyboard: 4
     movementYKeyboard: 5
     switchPlayerKeyboard: 3
     attack1Keyboard: 1
+    ressTEMPKeyboard: 11
 --- !u!50 &568637556239270282
 Rigidbody2D:
   serializedVersion: 4

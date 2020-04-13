@@ -2,54 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoving : State
+public class PlayerMoving : PlayerState
 {
-    protected GameManager gm;
-    protected Player player;
-    protected Transform transform;
-    protected Rigidbody2D rb;
-    protected Animator anim;
-    protected SpriteRenderer sprite;
-
-    protected bool isLookingRight;
-    protected float timeLastAttack;
-
     public PlayerMoving(StateMachine _stateMachine) : base(_stateMachine)
     {
     }
 
-    public override IEnumerator Enter()
-    {
-        GetReferences();
-
-        return base.Enter();
-    }
-
     public override void Execution()
     {
-        Movement(Player.GetAxis(player.inputs.movementX, player.inputs.movementXKeyboard), Player.GetAxis(player.inputs.movementY, player.inputs.movementYKeyboard) > 0.5f);
+        Movement(Inputs.GetAxis(player.inputs.movementX, player.inputs.movementXKeyboard), Inputs.GetAxis(player.inputs.movementY, player.inputs.movementYKeyboard) > 0.5f);
 
+        RotatePlayer();
         NormalAnimation();
 
-        Switch(Player.GetButtonDown(player.inputs.switchPlayer, player.inputs.switchPlayerKeyboard));
+        Switch(Inputs.GetButtonDown(player.inputs.switchPlayer, player.inputs.switchPlayerKeyboard));
 
-        Attack(Player.GetButtonDown(player.inputs.attack1, player.inputs.attack1Keyboard));
+        Attack1(Inputs.GetButtonDown(player.inputs.attack1, player.inputs.attack1Keyboard));
     }
-
-    #region enter
-
-    protected virtual void GetReferences()
-    {
-        gm = GameManager.instance;
-
-        player = stateMachine as Player;
-        transform = player.transform;
-        rb = player.rb;
-        anim = player.anim;
-        sprite = player.sprite;
-    }
-
-    #endregion
 
     #region execution
 
@@ -107,7 +76,9 @@ public class PlayerMoving : State
 
     #endregion
 
-    protected virtual void NormalAnimation()
+    #region animation
+
+    protected virtual void RotatePlayer()
     {
         float speed = rb.velocity.x;
 
@@ -122,6 +93,11 @@ public class PlayerMoving : State
             isLookingRight = false;
             sprite.flipX = false;
         }
+    }
+
+    protected virtual void NormalAnimation()
+    {
+        float speed = rb.velocity.x;
 
         //set animation
         if (IsGrounded())
@@ -135,6 +111,8 @@ public class PlayerMoving : State
         }
     }
 
+    #endregion
+
     protected virtual void Switch(bool inputSwitch)
     {
         //if press input, try to switch 
@@ -146,18 +124,18 @@ public class PlayerMoving : State
 
     #region attack
 
-    protected virtual void Attack(bool inputAttack)
+    protected virtual void Attack1(bool inputAttack)
     {
         //if press input after delay, do attack
-        if (inputAttack && Time.time > timeLastAttack)
+        if (inputAttack && Time.time > player.timeLastAttack)
         {
-            timeLastAttack = Time.time + player.delayAttack;
+            player.timeLastAttack = Time.time + player.attack1Delay;
 
-            DoAttack();
+            DoAttack1();
         }
     }
 
-    protected virtual void DoAttack()
+    protected virtual void DoAttack1()
     {
         anim.SetTrigger("Attack");
         //do something

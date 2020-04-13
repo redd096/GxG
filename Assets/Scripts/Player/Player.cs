@@ -3,82 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public enum AxisPad
-{
-    RightStickX,
-    RightStickY,
-    LeftStickX,
-    LeftStickY,
-    DPadX,
-    DPadY,
-    LT,
-    RT,
-    A,
-    B,
-    X,
-    Y,
-    LB,
-    RB,
-    RightStick,
-    LeftStick,
-    Start,
-    Back
-}
-
-[System.Serializable]
-public enum ButtonsPad
-{
-    A,
-    B,
-    X,
-    Y,
-    LB,
-    RB,
-    RightStick,
-    LeftStick,
-    Start,
-    Back
-}
-
-[System.Serializable]
-public enum AxisKeyboard
-{
-    MouseX,
-    MouseY,
-    LeftRight,
-    UpDown,
-    AD,
-    WS,
-    Space,
-    LeftClick,
-    RightClick,
-    Shift,
-    Ctrl,
-    Esc,
-    Enter,
-    LeftArrow,
-    RightArrow,
-    UpArrow,
-    DownArrow
-}
-
-[System.Serializable]
-public enum ButtonsKeyboard
-{
-    Space,
-    LeftClick,
-    RightClick,
-    Shift,
-    Ctrl,
-    Esc,
-    Enter,
-    LeftArrow,
-    RightArrow,
-    UpArrow,
-    DownArrow
-}
-
-[System.Serializable]
 public struct Input1
 {
     [Header("Pad")]
@@ -86,11 +10,13 @@ public struct Input1
     public AxisPad movementY;
     public ButtonsPad switchPlayer;
     public ButtonsPad attack1;
+    public ButtonsPad ressTEMP;
     [Header("Keyboard")]
     public AxisKeyboard movementXKeyboard;
     public AxisKeyboard movementYKeyboard;
     public ButtonsKeyboard switchPlayerKeyboard;
     public ButtonsKeyboard attack1Keyboard;
+    public ButtonsKeyboard ressTEMPKeyboard;
 }
 
 public class Player : StateMachine
@@ -112,9 +38,11 @@ public class Player : StateMachine
     [Header("Health")]
     public float maxHealth = 3;
 
-    [Header("Attack")]
-    public float damage = 1;
-    public float delayAttack = 0.5f;
+    [Header("Attack1")]
+    public float attack1Damage = 1;
+    public float attack1Duration = 0.5f;
+    public float attack1Delay = 0.5f;
+    [HideInInspector] public float timeLastAttack;
     [Tooltip("Red Line")]
     public Vector2 spawnAttack = new Vector2(0, 0.55f);
     [Tooltip("Red Line")]
@@ -212,37 +140,6 @@ public class Player : StateMachine
 
         //get life - limit max health
         health = life < maxHealth ? life : maxHealth;
-    }
-
-    #endregion
-
-    #region static API
-
-    public static float GetAxis(AxisPad inputPad, AxisKeyboard inputKeyboard)
-    {
-        float pad = Input.GetAxis(inputPad.ToString());
-        if (pad != 0)
-            return pad;
-        else
-            return Input.GetAxis(inputKeyboard.ToString());
-    }
-
-    public static bool GetButtonDown(ButtonsPad buttonPad, ButtonsKeyboard buttonKeyboard)
-    {
-        bool pad = Input.GetButtonDown(buttonPad.ToString());
-        if (pad)
-            return pad;
-        else
-            return Input.GetButtonDown(buttonKeyboard.ToString());
-    }
-
-    public static bool GetButton(ButtonsPad buttonPad, ButtonsKeyboard buttonKeyboard)
-    {
-        bool pad = Input.GetButton(buttonPad.ToString());
-        if (pad)
-            return pad;
-        else
-            return Input.GetButton(buttonKeyboard.ToString());
     }
 
     #endregion
