@@ -2,6 +2,97 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum AxisPad
+{
+    RightStickX,
+    RightStickY,
+    LeftStickX,
+    LeftStickY,
+    DPadX,
+    DPadY,
+    LT,
+    RT,
+    A,
+    B,
+    X,
+    Y,
+    LB,
+    RB,
+    RightStick,
+    LeftStick,
+    Start,
+    Back
+}
+
+[System.Serializable]
+public enum ButtonsPad
+{
+    A,
+    B,
+    X,
+    Y,
+    LB,
+    RB,
+    RightStick,
+    LeftStick,
+    Start,
+    Back
+}
+
+[System.Serializable]
+public enum AxisKeyboard
+{
+    MouseX,
+    MouseY,
+    LeftRight,
+    UpDown,
+    AD,
+    WS,
+    Space,
+    LeftClick,
+    RightClick,
+    Shift,
+    Ctrl,
+    Esc,
+    Enter,
+    LeftArrow,
+    RightArrow,
+    UpArrow,
+    DownArrow
+}
+
+[System.Serializable]
+public enum ButtonsKeyboard
+{
+    Space,
+    LeftClick,
+    RightClick,
+    Shift,
+    Ctrl,
+    Esc,
+    Enter,
+    LeftArrow,
+    RightArrow,
+    UpArrow,
+    DownArrow
+}
+
+[System.Serializable]
+public struct Input1
+{
+    [Header("Pad")]
+    public AxisPad movementX;
+    public AxisPad movementY;
+    public ButtonsPad switchPlayer;
+    public ButtonsPad attack1;
+    [Header("Keyboard")]
+    public AxisKeyboard movementXKeyboard;
+    public AxisKeyboard movementYKeyboard;
+    public ButtonsKeyboard switchPlayerKeyboard;
+    public ButtonsKeyboard attack1Keyboard;
+}
+
 public class Player : StateMachine
 {
     [Header("Important")]
@@ -32,9 +123,12 @@ public class Player : StateMachine
     [Header("Debug")]
     public float health;
 
-    [HideInInspector] public Rigidbody2D rb;
-    [HideInInspector] public Animator anim;
-    [HideInInspector] public SpriteRenderer sprite;
+    [Header("Inputs")]
+    public Input1 inputs;
+
+    public Rigidbody2D rb { get; private set; }
+    public Animator anim { get; private set; }
+    public SpriteRenderer sprite { get; private set; }
 
     void Start()
     {
@@ -53,7 +147,7 @@ public class Player : StateMachine
     {
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
 
-        //sphere used to check if grounded
+        //draw groundChecker
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(position + position_groundChecker, new Vector2(width_groundChecker, height_groundChecker));
 
@@ -118,6 +212,37 @@ public class Player : StateMachine
 
         //get life - limit max health
         health = life < maxHealth ? life : maxHealth;
+    }
+
+    #endregion
+
+    #region static API
+
+    public static float GetAxis(AxisPad inputPad, AxisKeyboard inputKeyboard)
+    {
+        float pad = Input.GetAxis(inputPad.ToString());
+        if (pad != 0)
+            return pad;
+        else
+            return Input.GetAxis(inputKeyboard.ToString());
+    }
+
+    public static bool GetButtonDown(ButtonsPad buttonPad, ButtonsKeyboard buttonKeyboard)
+    {
+        bool pad = Input.GetButtonDown(buttonPad.ToString());
+        if (pad)
+            return pad;
+        else
+            return Input.GetButtonDown(buttonKeyboard.ToString());
+    }
+
+    public static bool GetButton(ButtonsPad buttonPad, ButtonsKeyboard buttonKeyboard)
+    {
+        bool pad = Input.GetButton(buttonPad.ToString());
+        if (pad)
+            return pad;
+        else
+            return Input.GetButton(buttonKeyboard.ToString());
     }
 
     #endregion

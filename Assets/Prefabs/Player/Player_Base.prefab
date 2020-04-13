@@ -60,9 +60,15 @@ MonoBehaviour:
   spawnAttack: {x: 0, y: 0.55}
   rangeAttack: 0.7
   health: 0
-  rb: {fileID: 0}
-  anim: {fileID: 0}
-  sprite: {fileID: 0}
+  inputs:
+    movementX: 4
+    movementY: 5
+    switchPlayer: 5
+    attack1: 0
+    movementXKeyboard: 4
+    movementYKeyboard: 5
+    switchPlayerKeyboard: 3
+    attack1Keyboard: 1
 --- !u!50 &568637556239270282
 Rigidbody2D:
   serializedVersion: 4

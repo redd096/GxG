@@ -27,20 +27,18 @@ public class PlayerMoving : State
 
     public override void Execution()
     {
-        Movement(Input.GetAxis("Horizontal"), Input.GetButtonDown("Jump"));
+        Movement(Player.GetAxis(player.inputs.movementX, player.inputs.movementXKeyboard), Player.GetAxis(player.inputs.movementY, player.inputs.movementYKeyboard) > 0.5f);
 
         NormalAnimation();
 
-        Switch(Input.GetKeyDown(KeyCode.LeftShift));
+        Switch(Player.GetButtonDown(player.inputs.switchPlayer, player.inputs.switchPlayerKeyboard));
 
-        Attack(Input.GetKeyDown(KeyCode.Mouse0));
+        Attack(Player.GetButtonDown(player.inputs.attack1, player.inputs.attack1Keyboard));
     }
-
-    #region private API
 
     #region enter
 
-    void GetReferences()
+    protected virtual void GetReferences()
     {
         gm = GameManager.instance;
 
@@ -53,9 +51,11 @@ public class PlayerMoving : State
 
     #endregion
 
+    #region execution
+
     #region movement
 
-    void Movement(float inputMovement, bool inputJump)
+    protected virtual void Movement(float inputMovement, bool inputJump)
     {
         Vector2 velocity = rb.velocity;
 
@@ -68,7 +68,7 @@ public class PlayerMoving : State
         rb.velocity = velocity;
     }
 
-    float Jump(bool inputJump)
+    protected virtual float Jump(bool inputJump)
     {
         //if press input and is grounded - add jump speed
         if (inputJump && IsGrounded())
@@ -80,7 +80,7 @@ public class PlayerMoving : State
         return AddGravity();
     }
 
-    float AddGravity()
+    protected virtual float AddGravity()
     {
         if (IsGrounded())
         {
@@ -98,17 +98,16 @@ public class PlayerMoving : State
         }
     }
 
-    bool IsGrounded()
+    protected virtual bool IsGrounded()
     {
         //overlap box at player foots. If hit more than 1 (one is player), then is grounded
         Vector2 position = new Vector2(transform.position.x, transform.position.y);
         return Physics2D.OverlapBoxAll(position + player.position_groundChecker, new Vector2(player.width_groundChecker, player.height_groundChecker), 0).Length > 1;
-        //return Physics2D.OverlapCircleAll(transform.position + Vector3.up * player.height_groundChecker, player.width_groundChecker).Length > 1;
     }
 
     #endregion
 
-    void NormalAnimation()
+    protected virtual void NormalAnimation()
     {
         float speed = rb.velocity.x;
 
@@ -124,6 +123,7 @@ public class PlayerMoving : State
             sprite.flipX = false;
         }
 
+        //set animation
         if (IsGrounded())
         {
             anim.SetTrigger("Grounded");
@@ -135,7 +135,7 @@ public class PlayerMoving : State
         }
     }
 
-    void Switch(bool inputSwitch)
+    protected virtual void Switch(bool inputSwitch)
     {
         //if press input, try to switch 
         if (inputSwitch)

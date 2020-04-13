@@ -353,11 +353,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8283485528242956115, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8283485528242956117, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -413,24 +408,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4583339179623897133, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
-        type: 3}
-      propertyPath: m_ColliderPaths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4583339179623897133, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
-        type: 3}
-      propertyPath: m_ColliderPaths.Array.data[0].m_Collider
-      value: 
-      objectReference: {fileID: 1171742262}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f5f45fe866b9e4ba93511e2f8e53fe, type: 3}
---- !u!61 &1171742262 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5234115098206423685, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
-    type: 3}
-  m_PrefabInstance: {fileID: 717157414}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1318647593
 GameObject:
   m_ObjectHideFlags: 0

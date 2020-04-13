@@ -33,9 +33,13 @@ public class PlayerDead : State
         stateMachine.SetState(new PlayerBegin(stateMachine));
     }
 
+    #region enter
+
     void GetReferences()
     {
         player = stateMachine as Player;
         anim = player.anim;
     }
+
+    #endregion
 }

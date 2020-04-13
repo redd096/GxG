@@ -16,15 +16,13 @@ public class PlayerBegin : State
         {
             case TypesOfPlayer.knight:
                 stateMachine.SetState(new PlayerKnight(stateMachine));
-                break;
+                yield break;
             case TypesOfPlayer.wizard:
                 stateMachine.SetState(new PlayerWizard(stateMachine));
-                break;
+                yield break;
             default:
                 Debug.LogError("There is another Type of Player (enum) - add state machine");
-                break;
+                yield break;
         }
-
-        yield break;
     }
 }
