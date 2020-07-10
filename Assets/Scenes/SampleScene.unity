@@ -408,6 +408,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8283485528242956116, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
+        type: 3}
+      propertyPath: testDrag.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283485528242956116, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
+        type: 3}
+      propertyPath: testDrag.y
+      value: 3.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283485528242956116, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
+        type: 3}
+      propertyPath: testDrag.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283485528242956116, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
+        type: 3}
+      propertyPath: testDrag.Array.data[0].y
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283485528242956116, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
+        type: 3}
+      propertyPath: testDrag.Array.data[0].x
+      value: 1.3496628
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283485528242956116, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
+        type: 3}
+      propertyPath: testDrag.Array.data[1].x
+      value: 2.2888212
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283485528242956116, guid: f7f5f45fe866b9e4ba93511e2f8e53fe,
+        type: 3}
+      propertyPath: testDrag.Array.data[1].y
+      value: 0.060215235
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f5f45fe866b9e4ba93511e2f8e53fe, type: 3}
 --- !u!1 &1318647593

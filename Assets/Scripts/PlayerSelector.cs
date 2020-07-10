@@ -12,7 +12,6 @@ public class PlayerSelector : MonoBehaviour
 {
     [Header("Defaults")]
     [SerializeField] TypesOfPlayer startPlayer = TypesOfPlayer.knight;
-    //si può fare un array di struct (TypesOfPlayer, Player) così nel CreatePlayers controlla tutto l'array - non possono esserci duplicati di TypesOfPLayer
     [SerializeField] Player knightPrefab = default;
     [SerializeField] Player wizardPrefab = default;
 
@@ -40,15 +39,25 @@ public class PlayerSelector : MonoBehaviour
         //find spawn
         Transform playerSpawn = FindObjectOfType<Player>().transform;
 
-        InstantiateOnePlayer(TypesOfPlayer.knight, knightPrefab, playerSpawn);
-        InstantiateOnePlayer(TypesOfPlayer.wizard, wizardPrefab, playerSpawn);
+        InstantiatePlayers(playerSpawn.position);
 
         //destroy spawn
         Destroy(playerSpawn.gameObject);
     }
 
-    void InstantiateOnePlayer(TypesOfPlayer typeOfPlayer, Player prefab, Transform spawn)
+    /// <summary>
+    /// Instantiate every player - to modify if change type or number of players
+    /// </summary>
+    void InstantiatePlayers(Vector3 spawnPoint)
     {
+        //type of player (enum), prefab for that type, spawnPoint
+        InstantiateOnePlayer(TypesOfPlayer.knight, knightPrefab, spawnPoint);
+        InstantiateOnePlayer(TypesOfPlayer.wizard, wizardPrefab, spawnPoint);
+    }
+
+    void InstantiateOnePlayer(TypesOfPlayer typeOfPlayer, Player prefab, Vector3 spawnPoint)
+    {
+        //check if is setted prefab
         if(prefab == null)
         {
             Debug.LogError("There is not " + typeOfPlayer.ToString() + " prefab");
@@ -59,7 +68,7 @@ public class PlayerSelector : MonoBehaviour
         players[typeOfPlayer] = Instantiate(prefab).gameObject;
 
         //set position
-        players[typeOfPlayer].transform.position = spawn.position;
+        players[typeOfPlayer].transform.position = spawnPoint;
 
         //if not start player, deactivate it
         if (typeOfPlayer != startPlayer)
@@ -93,6 +102,8 @@ public class PlayerSelector : MonoBehaviour
 
     #endregion
 
+    #region public API
+
     public void SwitchPlayer(TypesOfPlayer activePlayer)
     {
         //only if one player
@@ -108,6 +119,8 @@ public class PlayerSelector : MonoBehaviour
         //deactivate one and active another
         SwitchToNextOne(activePlayer);
     }
+
+    #endregion
 
     /*
     #region multiplayer

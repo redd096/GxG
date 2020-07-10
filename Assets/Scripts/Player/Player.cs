@@ -24,7 +24,8 @@ public class Player : StateMachine
     [Header("Important")]
     public TypesOfPlayer typeOfPlayer;
 
-    [Header("GroundChecker - Blue Sphere")]
+    [Header("GroundChecker - Blue Cube")]
+    [DraggableLocalPoint] public Vector3 testDrag;
     public Vector2 position_groundChecker = new Vector2(0, 0.05f);
     public float width_groundChecker = 0.75f;
     public float height_groundChecker = 0.05f;
@@ -57,6 +58,9 @@ public class Player : StateMachine
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
     public SpriteRenderer sprite { get; private set; }
+
+    
+    public Vector3 test;
 
     void Start()
     {

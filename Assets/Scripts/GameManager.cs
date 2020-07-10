@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerSelector playerSelector { get; private set; }
 
-    void Start()
+    void Awake()
     {
         CheckInstance();
     }
@@ -17,20 +17,19 @@ public class GameManager : MonoBehaviour
     {
         if (instance)
         {
-            instance.SetDefaults();
             Destroy(this.gameObject);
         }
         else
         {
             instance = this;
-            SetDefaults();
+            DontDestroyOnLoad(this);
         }
+
+        instance.SetDefaults();
     }
 
     void SetDefaults()
     {
-        DontDestroyOnLoad(this);
-
         playerSelector = FindObjectOfType<PlayerSelector>();
     }
 }
