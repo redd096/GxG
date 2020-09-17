@@ -1,0 +1,400 @@
+fileFormatVersion: 2
+guid: 928e09eaeacedaa40a9a2ce266d09225
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6414115902687337652
+    second: Head
+  - first:
+      213: 1529516882283094198
+    second: Fringe
+  - first:
+      213: -6964519754834529415
+    second: Hat
+  - first:
+      213: -2835739594243700590
+    second: Bun_R
+  - first:
+      213: -5601467722938811489
+    second: Bun_L
+  - first:
+      213: 811727671848922833
+    second: Arm_R
+  - first:
+      213: 3487736832589564379
+    second: Lily Rig test1_6
+  - first:
+      213: -5333767827747606701
+    second: Arm_L
+  - first:
+      213: -4086115346682327423
+    second: Lily Rig test1_8
+  - first:
+      213: 6660491021482166233
+    second: Hand_R
+  - first:
+      213: -2620102839673164171
+    second: Hand_L
+  - first:
+      213: 2625572168860136405
+    second: Body
+  - first:
+      213: 555702185489025475
+    second: Lily Rig test1_12
+  - first:
+      213: -7725511133771242113
+    second: Leg_R
+  - first:
+      213: 7551740406184550957
+    second: Leg_L
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Head
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 1984
+        width: 348
+        height: 294
+      alignment: 9
+      pivot: {x: 0.5043411, y: 0.1253716}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a5922561a68f3c4095ecd36bc510acb
+      internalID: -6414115902687337652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fringe
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 2208
+        width: 94
+        height: 142
+      alignment: 9
+      pivot: {x: 0.45987198, y: 0.89844096}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8580a48418ebeee4f8a4292733980779
+      internalID: 1529516882283094198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hat
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 1981
+        width: 683
+        height: 444
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b470272802c836743bae48fbff6ce49d
+      internalID: -6964519754834529415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bun_R
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1291
+        width: 393
+        height: 603
+      alignment: 9
+      pivot: {x: 0.92980933, y: 0.9754746}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b9c2faf79426d04a89417a66313d52e
+      internalID: -2835739594243700590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bun_L
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 1292
+        width: 326
+        height: 575
+      alignment: 9
+      pivot: {x: 0.06513294, y: 0.9723395}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220d157232e991246a2f2a83eab653fa
+      internalID: -5601467722938811489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arm_R
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 1473
+        width: 225
+        height: 217
+      alignment: 9
+      pivot: {x: 0.89465714, y: 0.80690503}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a6d995d076fb2447a2834aa08a09299
+      internalID: 811727671848922833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arm_L
+      rect:
+        serializedVersion: 2
+        x: 1594
+        y: 1490
+        width: 250
+        height: 187
+      alignment: 9
+      pivot: {x: 0.12391504, y: 0.78630906}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 246e2aedbe16db14d83a7dc3041a4dc7
+      internalID: -5333767827747606701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand_R
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 1273
+        width: 113
+        height: 79
+      alignment: 9
+      pivot: {x: 0.7660819, y: 0.7725104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d73746311ee684a43ae3cab1df3465a3
+      internalID: 6660491021482166233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hand_L
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 1275
+        width: 103
+        height: 71
+      alignment: 9
+      pivot: {x: 0.25354597, y: 0.56417286}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9ac03647cbee6941b87af48d45822e2
+      internalID: -2620102839673164171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Body
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 780
+        width: 406
+        height: 489
+      alignment: 9
+      pivot: {x: 0.6622758, y: 0.48075208}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31552b02be4e7a94aa7a844cecb54da0
+      internalID: 2625572168860136405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leg_R
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 377
+        width: 103
+        height: 252
+      alignment: 9
+      pivot: {x: 0.6299533, y: 0.880663}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db8ae41f1b1194d4897104660e435651
+      internalID: -7725511133771242113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leg_L
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 381
+        width: 130
+        height: 249
+      alignment: 9
+      pivot: {x: 0.4742596, y: 0.8583715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e72d92dbdfcc4a47a47fb989b84d7bb
+      internalID: 7551740406184550957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
