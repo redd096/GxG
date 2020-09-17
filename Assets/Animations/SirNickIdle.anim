@@ -477,18 +477,7 @@ AnimationClip:
       m_RotationOrder: 4
     path: SirNick Torso/SirNick Arm_L/SirNick Hand_L
   m_FloatCurves: []
-  m_PPtrCurves:
-  - curve:
-    - time: 0
-      value: {fileID: 7033370866086798716, guid: b3402a403fd7a7049b540e83b2d89c8e,
-        type: 3}
-    - time: 0.33333334
-      value: {fileID: 1840381595159319988, guid: b3402a403fd7a7049b540e83b2d89c8e,
-        type: 3}
-    attribute: m_Sprite
-    path: SirNick Torso/SirNick Arm_R/SirNick Hand_R
-    classID: 212
-    script: {fileID: 0}
+  m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -582,21 +571,12 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 1326066390
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    - serializedVersion: 2
-      path: 1326066390
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-    pptrCurveMapping:
-    - {fileID: 7033370866086798716, guid: b3402a403fd7a7049b540e83b2d89c8e, type: 3}
-    - {fileID: 1840381595159319988, guid: b3402a403fd7a7049b540e83b2d89c8e, type: 3}
+    pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
